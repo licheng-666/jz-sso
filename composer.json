@@ -1,16 +1,18 @@
 {
-    "name": "jz-foods/sso",
+    "name": "jinzhongfoods/sso",
     "description": "集中认证",
-    "type": "MIT",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "licheng",
+            "name": "jinzhongfoods",
             "email": "1928485739@qq.com"
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=7.2"
+    },
     "autoload": {
         "psr-4": {
             "jz\\": "src/"

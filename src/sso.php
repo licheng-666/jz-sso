@@ -1,7 +1,7 @@
 <?php
 
 
-namespace jz;
+namespace jinzhongfoods;
 
 
 class sso

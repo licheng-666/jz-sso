@@ -1,7 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 
-use jz\sso;
+use jinzhongfoods\sso;
 
 
 echo "调用开始";
