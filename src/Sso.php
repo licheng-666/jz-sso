@@ -4,7 +4,7 @@
 namespace jinzhongfoods;
 
 
-class sso
+class Sso
 {
     public function __construct()
     {
