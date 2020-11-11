@@ -1,8 +1,9 @@
 <?php
 require_once '../vendor/autoload.php';
 
-use jz\sso;
+use jinzhongfoods\Sso;
+
 
 echo "调用开始";
-$sso = new sso();
+$sso = new Sso();
 echo "调用结束";
