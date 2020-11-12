@@ -47,7 +47,7 @@ class Sso
             if($data['status'] === 'success' && $data['code'] === 200) {
                 return $next($request);
             } else {
-                return response()->json(['data' => [], 'code' => "00004", 'message' => "Authentication failed", 'status' => 'failed']);
+                return $data;
             }
         } catch (\Exception $e) {
             return response()->json(['data' => [], 'code' => "500", 'message' => "authenticate is error", 'status' => 'failed']);
