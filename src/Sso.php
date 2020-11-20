@@ -5,6 +5,7 @@ namespace jinzhongfoods;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\URL;
 use mysql_xdevapi\Table;
@@ -50,6 +51,7 @@ class Sso
                 return $data;
             }
         } catch (\Exception $e) {
+            Log::info('认证错误!',['error_msg' => $e->getMessage(), 'error_info' => $e->getTraceAsString()]);
             return response()->json(['data' => [], 'code' => "500", 'message' => "authenticate is error", 'status' => 'failed']);
         }
     }
