@@ -20,7 +20,7 @@ class Sso
 
         try {
             //获取token
-            $sessionId = session_id();
+            $sessionId = $_COOKIE['PHPSESSID'] ?? '';
             $redis = new Redis();
             $token = $redis::get($sessionId);
             if(empty($token)) {
@@ -34,7 +34,7 @@ class Sso
             }
             //拼接权限名称--系统前缀+路由
             if(empty($systemPrefix->route_prefix)) {
-                return response()->json(['data' => [], 'code' => "00003", 'message' => "route_prefix is not defind", 'status' => 'failed']);
+                return response()->json(['data' => [], 'code' => "00004", 'message' => "route_prefix is not defind", 'status' => 'failed']);
             }
             $routName = str_replace('/','-', str_replace($systemPrefix->route_prefix . '/','', $request->path()));
             if(empty($routName)) {
@@ -44,7 +44,6 @@ class Sso
             $authPostData['permission'] = $systemPrefix->system_prefix . '-' . $routName;
             $result = $this->send(config('app.auth_url'), $token, json_encode($authPostData));
             $data = json_decode($result, true);
-
             if($data['status'] === 'success' && $data['code'] === 200) {
                 return $next($request);
             } else {
