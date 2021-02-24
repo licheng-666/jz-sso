@@ -42,7 +42,7 @@ class Sso
             }
             //权限名称: 系统前缀 + 路由名称
             $authPostData['permission'] = $systemPrefix->system_prefix . '-' . $routName;
-            $result = $this->send(config('app.auth_url'), $token, json_encode($authPostData));
+            $result = $this->send(config('app.auth_url') . '/api/auth', $token, json_encode($authPostData));
             $data = json_decode($result, true);
             if($data['status'] === 'success' && $data['code'] === 200) {
                 return $next($request);
